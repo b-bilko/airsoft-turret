@@ -64,13 +64,14 @@ const int led_B_Pin = 11;
 const int buttonLed_Pin = 10;
 
 const int buttonPin = 7; // the pin number for the button
-const int homePin = 0; // the pin number for the limit switch
 
-const int onBoardLedInterval = 100; // number of millisecs between blinks
+const int homePin = 8; // the pin number for the limit switch
+
+const int onBoardLedInterval = 2000; // number of millisecs between blinks
 const int led_A_Interval = 500;
 const int led_B_Interval = 200;
 
-const int blinkDuration = 100; // number of millisecs that Led's are on - all three leds use this
+const int blinkDuration = 500; // number of millisecs that Led's are on - all three leds use this
 
 const int buttonInterval = 300; // number of millisecs between button readings
 
@@ -100,8 +101,17 @@ void setup() {
   // Set the maximum acceleration in steps per second^2:
   stepper.setAcceleration(4000);
 
+  
+ //Home the Stepper 
+
+          
  Serial.begin(9600);
  Serial.println("Starting SeveralThingsAtTheSameTimeRev1.ino");  // so we know what sketch is running
+
+
+
+ pinMode(homePin, INPUT); // limit switch to GND
+ digitalWrite(homePin, HIGH); // pullup on Pin
  
      // set the Led pins as output:
  pinMode(onBoardLedPin, OUTPUT);
@@ -112,6 +122,14 @@ void setup() {
      // set the button pin as input with a pullup resistor to ensure it defaults to HIGH
  pinMode(buttonPin, INPUT_PULLUP);
  
+
+ while(digitalRead(homePin) == HIGH){ // switch not yet triggered/home
+     stepper.move(800); // then continue to move in anticlockwise directio      
+     stepper.run();        
+            }
+   stepper.setCurrentPosition(0); // once homePin == LOW, reset currentPosition to 0
+
+
 
 
 }
@@ -239,14 +257,14 @@ void stepperSweep() {
 
 
   // Set target position:
-  stepper.moveTo(270);
+  stepper.moveTo(-800);
   // Run to position with set speed and acceleration:
   stepper.runToPosition();
   
  
   
   // Move back to original position:
-  stepper.moveTo(-270);
+  stepper.moveTo(-50);
   // Run to position with set speed and acceleration:
   stepper.runToPosition();
 
