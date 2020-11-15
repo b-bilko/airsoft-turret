@@ -14,6 +14,13 @@ There is a simple homing done of the stepper to allow the entire setup to be mou
 
 On startup the stepper tracks anticlockwise, till it hits the switch, then back clockwise to the edge of the opening. The return sweep then stops just short of the switch to avoid making a noise. 
 
+
+PIR Layout
+
+![Image of PIR Layour](https://imgur.com/R7VK1sg)
+
+
+
 TODO:
 Add Buzzer 
 Fix LED Blinking to be out of time with Stepper. Blocking code issue?
