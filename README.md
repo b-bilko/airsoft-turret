@@ -21,7 +21,9 @@ PIR Layout
 
 Set to low sensitivity, Low output timing, No reset
 
+Circuit Diagram
 
+![Circuit Diagram](https://i.imgur.com/KQVZNKH.png)
 
 
 
