@@ -17,7 +17,11 @@ On startup the stepper tracks anticlockwise, till it hits the switch, then back 
 
 PIR Layout
 
-![Image of PIR Layour](https://imgur.com/R7VK1sg)
+![Image of PIR Layour](https://i.imgur.com/R7VK1sg.png)
+
+Set to low sensitivity, Low output timing, No reset
+
+
 
 
 
